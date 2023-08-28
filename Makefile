@@ -25,7 +25,7 @@ NAME	= cub3d
 
 CC		= gcc
 
-CFLAGS	= -Wall -Wextra -Werror -D MAP=0
+CFLAGS	= -Wall -Wextra -Werror -D MAP=1
 
 LIBS		= -L ./libft -lft -L ${MLX}/build -lmlx42 -L"/$$HOME/.brew/opt/glfw/lib/" -lglfw 
 
@@ -35,7 +35,7 @@ FRAMEWORK	= -framework Cocoa -framework OpenGL -framework IOKit
 		${CC} ${HEAD} ${CFLAGS} -c $< -o ${<:.c=.o}
 
 ${NAME}:	${LFT} ${MLX} ${OBJS}
-			${CC} ${HEAD} ${CFLAGS} ${OBJS} ${LIBS} ${FRAMEWORK} -o ${NAME}
+			${CC} ${HEAD} ${CFLAGS} ${OBJS} ${LIBS} -ldl -pthread -lm -o ${NAME}
 
 ${LFT}:
 			make -s -C libft

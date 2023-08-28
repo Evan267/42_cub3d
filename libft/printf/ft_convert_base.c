@@ -41,8 +41,6 @@ static int	ft_len_convert_nb(unsigned long nb, int base_len)
 	int	i;
 
 	i = 1;
-	if (nb < 0)
-		nb = -nb;
 	while (nb / base_len > 0)
 	{
 		i++;
@@ -62,7 +60,7 @@ static char	*ft_save(unsigned long nbl, char *base, int len_convert, int neg)
 		return (0);
 	result[len_convert] = '\0';
 	len_convert--;
-	while (len_convert >= 0 && nbl >= 0)
+	while (len_convert >= 0)
 	{
 		result[len_convert] = base[nbl % base_len];
 		len_convert--;
@@ -79,13 +77,7 @@ static char	*ft_convert(unsigned long nb, char *base, int base_len)
 	int		len_convert;
 
 	len_convert = ft_len_convert_nb(nb, base_len);
-	if (nb < 0)
-	{
-		len_convert += 1;
-		result = ft_save(-nb, base, len_convert, 1);
-	}
-	else
-		result = ft_save(nb, base, len_convert, 0);
+	result = ft_save(nb, base, len_convert, 0);
 	return (result);
 }
 

@@ -100,9 +100,7 @@ t_ray	**init_ray(t_vars *vars)
 t_pers	*init_pers(int x, int y, char c, t_vars *vars)
 {
 	t_pers	*pers;
-	int		i;
 
-	i = 0;
 	pers = malloc(sizeof(t_pers));
 	if (!pers)
 		return (NULL);
